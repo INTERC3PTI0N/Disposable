@@ -2,17 +2,36 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import Image from 'next/image';
 
 export default function Loader({ onComplete }: { onComplete: () => void }) {
   const [progress, setProgress] = useState(0);
-  const [isFlashing, setIsFlashing] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isExpanding, setIsExpanding] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [currentText, setCurrentText] = useState(0);
+
+  const images = [
+    "https://picsum.photos/seed/df1/400/400",
+    "https://picsum.photos/seed/df2/400/400",
+    "https://picsum.photos/seed/df3/400/400",
+    "https://picsum.photos/seed/df4/400/400",
+    "https://picsum.photos/seed/df5/400/400",
+    "https://picsum.photos/seed/df6/400/400",
+  ];
+
+  const loadingTexts = [
+    "Loading assets...",
+    "Preparing cameras...",
+    "Setting up lights...",
+    "Focusing lens...",
+    "Almost ready..."
+  ];
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     
-    const duration = 2500; 
+    const duration = 3000; 
     const interval = 50;
     const steps = duration / interval;
     let currentStep = 0;
@@ -24,12 +43,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
 
       if (currentStep >= steps) {
         clearInterval(timer);
-        setIsFlashing(true);
-        setTimeout(() => {
-          setIsVisible(false);
-          onComplete();
-          document.body.style.overflow = 'unset';
-        }, 400); 
+        setIsLoaded(true);
       }
     }, interval);
 
@@ -37,89 +51,151 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
       clearInterval(timer);
       document.body.style.overflow = 'unset';
     };
-  }, [onComplete]);
+  }, []);
 
-  const images = [
-    "https://picsum.photos/seed/doc1/800/600",
-    "https://picsum.photos/seed/doc2/800/600",
-    "https://picsum.photos/seed/doc3/800/600",
-    "https://picsum.photos/seed/doc4/800/600",
-    "https://picsum.photos/seed/doc5/800/600",
-    "https://picsum.photos/seed/doc6/800/600",
-    "https://picsum.photos/seed/doc7/800/600",
-    "https://picsum.photos/seed/doc8/800/600",
-  ];
+  // Cycle images rapidly
+  useEffect(() => {
+    if (isLoaded) return;
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 150);
+    return () => clearInterval(interval);
+  }, [isLoaded, images.length]);
+
+  // Cycle text
+  useEffect(() => {
+    if (isLoaded) return;
+    const interval = setInterval(() => {
+      setCurrentText((prev) => (prev + 1) % loadingTexts.length);
+    }, 600);
+    return () => clearInterval(interval);
+  }, [isLoaded, loadingTexts.length]);
+
+  const handleExplore = () => {
+    setIsExpanding(true);
+    setTimeout(() => {
+      setIsVisible(false);
+      onComplete();
+      document.body.style.overflow = 'unset';
+    }, 1000); // Wait for zoom animation
+  };
 
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed inset-0 z-[9999] bg-[#0a0a0a] text-white/80 font-mono text-xs uppercase tracking-widest flex items-center justify-center overflow-hidden"
+          className="fixed inset-0 z-[9999] bg-bg text-text flex items-center justify-center overflow-hidden"
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Left Text */}
-          <div className="absolute left-8 md:left-16 top-1/2 -translate-y-1/2 hidden md:block z-30">
-            [ DISPOSABLE FILMS ]
-          </div>
+          {/* Central Animated Elements */}
+          <motion.div
+            animate={isExpanding ? { scale: 30, opacity: 0 } : { scale: 1, opacity: 1 }}
+            transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
+            className="absolute inset-0 flex items-center justify-center pointer-events-none"
+          >
+            {/* The D Outline */}
+            <svg viewBox="0 0 120 120" className="w-64 h-64 md:w-80 md:h-80 absolute text-text/20">
+              <path d="M 40 20 L 60 20 C 85 20, 100 35, 100 60 C 100 85, 85 100, 60 100 L 40 100 Z" fill="none" stroke="currentColor" strokeWidth="0.5" />
+            </svg>
 
-          {/* Right Text */}
-          <div className="absolute right-8 md:right-16 top-1/2 -translate-y-1/2 w-32 text-right hidden md:block z-30">
-            [ {progress.toString().padStart(2, '0')} PERCENT ]
-          </div>
-          
-          {/* Mobile Text */}
-          <div className="absolute top-8 left-1/2 -translate-x-1/2 md:hidden z-30">
-            [ {progress.toString().padStart(2, '0')} PERCENT ]
-          </div>
-
-          {/* Center Viewfinder */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
-            <div className="w-72 h-48 md:w-[400px] md:h-[260px] relative">
-              {/* Corners */}
-              <div className="absolute -top-4 -left-4 w-8 h-8 border-t-[3px] border-l-[3px] border-white/80" />
-              <div className="absolute -top-4 -right-4 w-8 h-8 border-t-[3px] border-r-[3px] border-white/80" />
-              <div className="absolute -bottom-4 -left-4 w-8 h-8 border-b-[3px] border-l-[3px] border-white/80" />
-              <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b-[3px] border-r-[3px] border-white/80" />
-              
-              {/* Center Crosshair */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 opacity-80">
-                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[2px] h-3 bg-white" />
-                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[2px] h-3 bg-white" />
-                 <div className="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-[2px] bg-white" />
-                 <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-[2px] bg-white" />
-              </div>
-            </div>
-          </div>
-
-          {/* Scrolling Images Strip */}
-          <div className="absolute inset-0 flex items-center justify-center z-10">
-             <motion.div 
-               className="flex flex-col gap-4"
-               initial={{ y: "0%" }}
-               animate={{ y: "-70%" }}
-               transition={{ duration: 2.5, ease: "linear" }}
-             >
-               {images.map((src, i) => (
-                 <div key={i} className="w-72 h-48 md:w-[400px] md:h-[260px] relative shrink-0">
-                   <Image src={src} alt="Loading" fill className="object-cover" referrerPolicy="no-referrer" />
-                 </div>
-               ))}
-             </motion.div>
-          </div>
-
-          {/* Flash Overlay */}
-          <AnimatePresence>
-            {isFlashing && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+            {/* The Circular Progress */}
+            <svg viewBox="0 0 120 120" className="w-80 h-80 md:w-96 md:h-96 absolute -rotate-90">
+              <motion.circle
+                cx="60"
+                cy="60"
+                r="58"
+                fill="none"
+                stroke="var(--accent)"
+                strokeWidth="0.5"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: progress / 100 }}
                 transition={{ duration: 0.1 }}
-                className="absolute inset-0 bg-white z-50"
               />
+            </svg>
+
+            {/* The Progress Dot */}
+            <motion.div
+              className="absolute w-80 h-80 md:w-96 md:h-96 rounded-full"
+              style={{ rotate: progress * 3.6 - 90 }}
+            >
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-accent shadow-[0_0_10px_var(--accent)]" />
+            </motion.div>
+
+            {/* The Image Square */}
+            <div className="absolute w-20 h-20 md:w-24 md:h-24 overflow-hidden neo-border ml-4 bg-bg2">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentImage}
+                  src={images[currentImage]}
+                  initial={{ opacity: 0.5, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0.5 }}
+                  transition={{ duration: 0.15 }}
+                  className="w-full h-full object-cover grayscale"
+                  alt="Loading sequence"
+                />
+              </AnimatePresence>
+            </div>
+          </motion.div>
+
+          {/* Text Elements */}
+          <AnimatePresence>
+            {isLoaded && !isExpanding && (
+              <>
+                <motion.div
+                  initial={{ x: -50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="absolute left-8 md:left-24 top-1/2 -translate-y-1/2 font-display text-4xl md:text-7xl text-text uppercase tracking-tight z-10"
+                >
+                  Explore our
+                </motion.div>
+                <motion.div
+                  initial={{ x: 50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="absolute right-8 md:right-24 top-1/2 -translate-y-1/2 font-display text-4xl md:text-7xl text-text uppercase tracking-tight z-10"
+                >
+                  new era
+                </motion.div>
+                
+                <motion.button
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  onClick={handleExplore}
+                  className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-text/80 hover:text-accent transition-colors z-20 group"
+                >
+                  <span className="font-sans text-xs uppercase tracking-widest">Click to explore</span>
+                  <div className="w-10 h-10 rounded-full border border-current flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all">
+                    <span className="text-sm">↓</span>
+                  </div>
+                </motion.button>
+              </>
             )}
           </AnimatePresence>
+
+          {/* Loading Text */}
+          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center text-center z-10">
+            <AnimatePresence mode="wait">
+              {!isLoaded && !isExpanding && (
+                <motion.div
+                  key={currentText}
+                  initial={{ y: 10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -10, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="font-sans text-xs uppercase tracking-widest text-text/60"
+                >
+                  {loadingTexts[currentText]}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
