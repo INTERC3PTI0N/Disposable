@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-barlow);
+  --font-display: var(--font-bebas);
+  --font-condensed: var(--font-barlow-condensed);
+
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-bg3: var(--bg3);
+  --color-text: var(--text);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-shadow: var(--shadow);
+}
+
+:root {
+  /* Dark Mode (default) */
+  --bg: #0a0a0a;
+  --bg2: #141414;
+  --bg3: #1a1a1a;
+  --text: #f5f0e8;
+  --accent: #FF5500;
+  --border: #FF5500;
+  --shadow: #FF5500;
+}
+
+:root[data-theme="light"] {
+  /* Light Mode */
+  --bg: #f5f0e8;
+  --bg2: #e8e2d5;
+  --bg3: #dcd4c3;
+  --text: #0a0a0a;
+  --accent: #FF5500;
+  --border: #0a0a0a;
+  --shadow: #0a0a0a;
+}
+
+@layer utilities {
+  .neo-border {
+    border: 3px solid var(--border);
+  }
+  
+  .neo-shadow {
+    box-shadow: 6px 6px 0px var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .neo-shadow:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px var(--shadow);
+  }
+
+  .neo-shadow-sm {
+    box-shadow: 4px 4px 0px var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .neo-shadow-sm:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--shadow);
+  }
+
+  .neo-shadow-lg {
+    box-shadow: 12px 12px 0px var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .neo-shadow-lg:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 16px 16px 0px var(--shadow);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  animation: ticker 20s linear infinite;
+}
