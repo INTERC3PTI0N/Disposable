@@ -15,14 +15,70 @@ export default function HeroBento() {
           transition={{ delay: 0.1 }}
           className="md:col-span-2 md:row-span-2 bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 md:p-12 flex flex-col justify-between relative overflow-hidden group"
         >
-          <div className="flex justify-between items-start">
-            <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-white/70">
-              <span className="text-white">📍</span> MUMBAI / INDIA
+          {/* Viewfinder corners */}
+          <div className="absolute top-6 left-6 w-8 h-8 border-t-2 border-l-2 border-white/20 pointer-events-none" />
+          <div className="absolute top-6 right-6 w-8 h-8 border-t-2 border-r-2 border-white/20 pointer-events-none" />
+          <div className="absolute bottom-6 left-6 w-8 h-8 border-b-2 border-l-2 border-white/20 pointer-events-none" />
+          <div className="absolute bottom-6 right-6 w-8 h-8 border-b-2 border-r-2 border-white/20 pointer-events-none" />
+
+          {/* Top Bar */}
+          <div className="flex justify-between items-start w-full relative z-10">
+            <div className="flex items-center gap-3 bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/10">
+              <div className="w-2.5 h-2.5 rounded-full bg-[#FF5A5F] animate-pulse" />
+              <span className="font-mono text-[10px] tracking-widest text-white/90 font-bold">REC</span>
             </div>
-            <div className="w-3 h-3 rounded-full bg-[#FF5A5F] animate-pulse neo-border" />
+            <div className="flex gap-2 sm:gap-4">
+              <div className="font-mono text-[10px] tracking-widest text-white/50 bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/10">
+                ISO 400
+              </div>
+              <div className="font-mono text-[10px] tracking-widest text-white/50 bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/10 hidden sm:block">
+                24 FPS
+              </div>
+            </div>
           </div>
+
+          {/* Center Crosshair */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center opacity-20 pointer-events-none group-hover:scale-110 transition-transform duration-700">
+            <div className="w-16 h-[1px] bg-white absolute" />
+            <div className="w-[1px] h-16 bg-white absolute" />
+            <div className="w-6 h-6 border border-white rounded-full absolute" />
+          </div>
+
+          {/* Scrolling Marquee Background */}
+          <div className="absolute top-1/3 left-0 w-[200%] overflow-hidden flex whitespace-nowrap opacity-[0.04] pointer-events-none -rotate-3 -translate-y-1/2">
+            <motion.div
+              animate={{ x: [0, -1000] }}
+              transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+              className="flex gap-8 font-display text-7xl sm:text-9xl tracking-widest uppercase"
+            >
+              <span>CREATIVE AGENCY</span>
+              <span>•</span>
+              <span>PRODUCTION HOUSE</span>
+              <span>•</span>
+              <span>STUDIO</span>
+              <span>•</span>
+              <span>CREATIVE AGENCY</span>
+              <span>•</span>
+              <span>PRODUCTION HOUSE</span>
+              <span>•</span>
+              <span>STUDIO</span>
+              <span>•</span>
+            </motion.div>
+          </div>
+
+          {/* Floating Glows */}
+          <motion.div 
+            animate={{ y: [0, -20, 0], opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/4 right-1/4 w-32 h-32 bg-[#FF5A5F] rounded-full blur-[80px] pointer-events-none"
+          />
+          <motion.div 
+            animate={{ y: [0, 20, 0], opacity: [0.2, 0.4, 0.2] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-[#FFD166] rounded-full blur-[80px] pointer-events-none"
+          />
           
-          <div className="mt-auto">
+          <div className="mt-auto relative z-10">
             <h1 className="font-display text-[18vw] md:text-[11rem] leading-[0.8] text-[#FF5A5F] tracking-tighter uppercase drop-shadow-sm">
               DISPOSABLE.
             </h1>
@@ -40,52 +96,19 @@ export default function HeroBento() {
           className="bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 flex flex-col justify-center gap-6 group hover:bg-[#1a1a1a]/90 transition-colors"
         >
           <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-[10px] text-white/60">
-            01
-          </div>
-          <div>
-            <h2 className="font-display text-3xl md:text-4xl uppercase text-white mb-3">DISPOSABLE FILMS</h2>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">YOUR BRAND. OUR CAMERA.</p>
-          </div>
-        </motion.div>
-
-        {/* Middle Right Block */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 flex flex-col justify-center gap-6 group hover:bg-[#1a1a1a]/90 transition-colors"
-        >
-          <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-[10px] text-white/60">
-            02
-          </div>
-          <div>
-            <h2 className="font-display text-3xl md:text-4xl uppercase text-white mb-3">DISPOSABLE STUDIO</h2>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">RENT. SHOOT. CREATE.</p>
-          </div>
-        </motion.div>
-
-        {/* Bottom Left Block */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 flex flex-col justify-center gap-6 group hover:bg-[#1a1a1a]/90 transition-colors"
-        >
-          <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-[10px] text-white/60">
             04
           </div>
           <div>
             <h2 className="font-display text-4xl md:text-5xl uppercase text-white mb-3">PORTFOLIO</h2>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">SELECTED WORKS</p>
           </div>
         </motion.div>
 
-        {/* Bottom Middle Block (Yellow/Accent) */}
+        {/* Middle Right Block */}
         <Link href="#contact" className="block h-full">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.3 }}
             className="h-full bg-[#FFD166] rounded-2xl neo-border neo-shadow p-8 flex flex-col justify-between relative overflow-hidden group hover:-translate-y-2 transition-transform cursor-pointer text-black"
           >
             <div className="flex justify-between items-start relative z-10">
@@ -101,6 +124,38 @@ export default function HeroBento() {
             <div className="absolute -bottom-16 -right-16 w-48 h-48 rounded-full border-[24px] border-black/10" />
           </motion.div>
         </Link>
+
+        {/* Bottom Left Block */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 flex flex-col justify-center gap-6 group hover:bg-[#1a1a1a]/90 transition-colors"
+        >
+          <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-[10px] text-white/60">
+            01
+          </div>
+          <div>
+            <h2 className="font-display text-3xl md:text-4xl uppercase text-white mb-3">DISPOSABLE FILMS</h2>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">YOUR BRAND. OUR LENS.</p>
+          </div>
+        </motion.div>
+
+        {/* Bottom Middle Block (Yellow/Accent) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 flex flex-col justify-center gap-6 group hover:bg-[#1a1a1a]/90 transition-colors"
+        >
+          <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-[10px] text-white/60">
+            02
+          </div>
+          <div>
+            <h2 className="font-display text-3xl md:text-4xl uppercase text-white mb-3">DISPOSABLE STUDIOS</h2>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">RENT. SHOOT. CREATE.</p>
+          </div>
+        </motion.div>
 
         {/* Bottom Right Block */}
         <motion.div 

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function About() {
   return (
     <section
@@ -12,41 +14,33 @@ export default function About() {
               Who We Are
             </span>
             <h2 className="font-display text-5xl md:text-6xl uppercase tracking-tight text-text">
-              BUILT FOR <span className="text-accent">GEN Z.</span> <br />
-              BUILT TO CONVERT.
+              STRATERGY - LED <br />
+              OUTCOME <span className="text-accent">DRIVEN</span>.
             </h2>
           </div>
 
           <div className="font-sans text-lg text-text/90 space-y-4">
             <p>
-              Disposable Films is a content-first creative house based in
-              Mumbai. We&apos;re a team of creators, strategists, and production
-              heads who understand what moves people online.
+              We are only here because our clients choose us – our results are critical to their roles and their businesses.
+
             </p>
             <p>
-              We create content that doesn&apos;t just look good &mdash; it
-              works. From viral reels to full-blown campaigns, we scale your
-              presence. And we shoot it all in our in-house creative space:
-              Disposable Studios.
+              Disposable Films is a content-first creative house based in Mumbai. We&apos;re a team of creators, strategists, and production heads who understand what moves people online. 
+
+            </p>
+            <p>
+              Our Focus is on high-impact production that bridges the gap between aesthetic excellence and strategic performance. From high-energy viral reels to comprehensive multi-channel campaigns. We specialise in scaling your brand&apos;s digital presence through content that is purpose-built to convert.  
+
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mt-4">
-            {[
-              "No Fluff.",
-              "Full Control.",
-              "Fast Turnarounds.",
-              "Trend-First.",
-            ].map((val, i) => (
-              <div
-                key={i}
-                className="bg-bg/60 backdrop-blur-md p-4 neo-border neo-shadow-sm flex items-center justify-center text-center"
-              >
-                <span className="font-condensed font-bold uppercase tracking-wider text-text">
-                  {val}
-                </span>
-              </div>
-            ))}
+          <div className="mt-4">
+            <Link
+              href="#contact"
+              className="inline-block px-8 py-4 bg-accent text-white font-condensed font-bold uppercase tracking-wider neo-border neo-shadow hover:-translate-y-1 transition-transform"
+            >
+              Let&apos;s Talk &rarr;
+            </Link>
           </div>
         </div>
 
@@ -62,10 +56,7 @@ export default function About() {
             fast turnarounds, and way more flexibility. You can rent it too.
           </p>
 
-          <div className="flex flex-wrap gap-3 mt-4">
-            <span className="px-4 py-2 bg-accent text-white font-condensed font-bold uppercase tracking-wider text-sm neo-border">
-              Mumbai
-            </span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3 mt-4">
             {[
               "Content-First",
               "Strategy-Backed",
@@ -73,13 +64,25 @@ export default function About() {
               "Gen Z Native",
               "Full Service",
             ].map((tag, i) => (
-              <span
+              <div
                 key={i}
-                className="px-4 py-2 bg-bg text-text font-condensed font-bold uppercase tracking-wider text-sm neo-border"
+                className="flex items-center gap-2 font-condensed font-bold uppercase tracking-wider text-sm text-text/80 hover:text-accent hover:translate-x-1 transition-all duration-300 cursor-default group"
               >
-                {tag}
-              </span>
+                <span className="text-accent transition-transform duration-300 group-hover:translate-x-1">
+                  &rarr;
+                </span>
+                <span>{tag}</span>
+              </div>
             ))}
+          </div>
+
+          <div className="mt-4">
+            <Link
+              href="#work"
+              className="inline-block px-8 py-4 bg-text text-bg font-condensed font-bold uppercase tracking-wider neo-border neo-shadow hover:-translate-y-1 transition-transform"
+            >
+              View Portfolio &rarr;
+            </Link>
           </div>
         </div>
       </div>

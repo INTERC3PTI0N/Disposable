@@ -11,37 +11,37 @@ export default function Work() {
 
   const projects = [
     {
-      title: "Crocs Summer Drop",
+      title: "Kayan X Fastrack",
       category: "Campaigns",
       image: "https://picsum.photos/seed/crocs/800/600",
       tags: ["Strategy", "Production"],
     },
     {
-      title: "Drip Project Launch",
+      title: "Bestseller X Rolling Loud",
       category: "Reels",
       image: "https://picsum.photos/seed/drip/800/600",
       tags: ["Shoots", "Editing"],
     },
     {
-      title: "Fastrack Smart",
+      title: "Drip Project - Launch Campaign",
       category: "UGC",
       image: "https://picsum.photos/seed/fastrack/800/600",
       tags: ["Influencer", "Content"],
     },
     {
-      title: "Urban Monkey X",
+      title: "Drip Project - Core Campaign",
       category: "Studio",
       image: "https://picsum.photos/seed/urban/800/600",
       tags: ["Studio", "Photography"],
     },
     {
-      title: "Nike Running",
+      title: "Spotify Rap91 Aftermovie",
       category: "Campaigns",
       image: "https://picsum.photos/seed/nike/800/600",
       tags: ["Creative Direction", "Video"],
     },
     {
-      title: "Red Bull Dance",
+      title: "Drip Project - Men's Jewellery",
       category: "Reels",
       image: "https://picsum.photos/seed/redbull/800/600",
       tags: ["Event Coverage", "Social"],
