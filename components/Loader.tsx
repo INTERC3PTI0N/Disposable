@@ -31,7 +31,7 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     
-    const duration = 3000; 
+    const duration = 1200; // Faster duration
     const interval = 50;
     const steps = duration / interval;
     let currentStep = 0;
@@ -49,9 +49,20 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
 
     return () => {
       clearInterval(timer);
-      document.body.style.overflow = 'unset';
     };
   }, []);
+
+  useEffect(() => {
+    if (isLoaded) {
+      setIsExpanding(true);
+      const timeout = setTimeout(() => {
+        setIsVisible(false);
+        onComplete();
+        document.body.style.overflow = 'unset';
+      }, 800); // Wait for zoom animation
+      return () => clearTimeout(timeout);
+    }
+  }, [isLoaded, onComplete]);
 
   // Cycle images rapidly
   useEffect(() => {
@@ -70,15 +81,6 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
     }, 600);
     return () => clearInterval(interval);
   }, [isLoaded, loadingTexts.length]);
-
-  const handleExplore = () => {
-    setIsExpanding(true);
-    setTimeout(() => {
-      setIsVisible(false);
-      onComplete();
-      document.body.style.overflow = 'unset';
-    }, 1000); // Wait for zoom animation
-  };
 
   return (
     <AnimatePresence>
@@ -138,46 +140,6 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
               </AnimatePresence>
             </div>
           </motion.div>
-
-          {/* Text Elements */}
-          <AnimatePresence>
-            {isLoaded && !isExpanding && (
-              <>
-                <motion.div
-                  initial={{ x: -50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="absolute left-8 md:left-24 top-1/2 -translate-y-1/2 font-display text-4xl md:text-7xl text-text uppercase tracking-tight z-10"
-                >
-                  Explore our
-                </motion.div>
-                <motion.div
-                  initial={{ x: 50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="absolute right-8 md:right-24 top-1/2 -translate-y-1/2 font-display text-4xl md:text-7xl text-text uppercase tracking-tight z-10"
-                >
-                  new era
-                </motion.div>
-                
-                <motion.button
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                  onClick={handleExplore}
-                  className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-text/80 hover:text-accent transition-colors z-20 group"
-                >
-                  <span className="font-sans text-xs uppercase tracking-widest">Click to explore</span>
-                  <div className="w-10 h-10 rounded-full border border-current flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all">
-                    <span className="text-sm">↓</span>
-                  </div>
-                </motion.button>
-              </>
-            )}
-          </AnimatePresence>
 
           {/* Loading Text */}
           <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center text-center z-10">

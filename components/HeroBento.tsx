@@ -15,11 +15,53 @@ export default function HeroBento() {
           transition={{ delay: 0.1 }}
           className="md:col-span-2 md:row-span-2 bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 md:p-12 flex flex-col justify-between relative overflow-hidden group"
         >
+          {/* Video Collage Background */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div className="grid grid-cols-2 grid-rows-2 h-full w-full gap-1 p-4 opacity-40">
+              <motion.div 
+                animate={{ scale: [1, 1.05, 1], opacity: [0.7, 0.9, 0.7] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="relative overflow-hidden rounded-lg"
+              >
+                <img src="https://picsum.photos/seed/shoot1/800/600" alt="Shoot 1" className="w-full h-full object-cover grayscale sepia-[0.2]" />
+              </motion.div>
+              <motion.div 
+                animate={{ scale: [1.05, 1, 1.05], opacity: [0.8, 0.6, 0.8] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="relative overflow-hidden rounded-lg"
+              >
+                <img src="https://picsum.photos/seed/shoot2/800/600" alt="Shoot 2" className="w-full h-full object-cover grayscale brightness-75" />
+              </motion.div>
+              <motion.div 
+                animate={{ scale: [1, 1.1, 1], opacity: [0.6, 0.8, 0.6] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="relative overflow-hidden rounded-lg"
+              >
+                <img src="https://picsum.photos/seed/shoot3/800/600" alt="Shoot 3" className="w-full h-full object-cover grayscale contrast-125" />
+              </motion.div>
+              <motion.div 
+                animate={{ scale: [1.1, 1, 1.1], opacity: [0.9, 0.7, 0.9] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                className="relative overflow-hidden rounded-lg"
+              >
+                <img src="https://picsum.photos/seed/shoot4/800/600" alt="Shoot 4" className="w-full h-full object-cover grayscale sepia-[0.1]" />
+              </motion.div>
+            </div>
+            
+            {/* Grain Overlay */}
+            <div className="absolute inset-0 opacity-[0.15] pointer-events-none mix-blend-overlay animate-grain" 
+                 style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
+            
+            {/* Scanlines */}
+            <div className="absolute inset-0 pointer-events-none opacity-[0.05]" 
+                 style={{ background: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))', backgroundSize: '100% 2px, 3px 100%' }} />
+          </div>
+
           {/* Viewfinder corners */}
-          <div className="absolute top-6 left-6 w-8 h-8 border-t-2 border-l-2 border-white/20 pointer-events-none" />
-          <div className="absolute top-6 right-6 w-8 h-8 border-t-2 border-r-2 border-white/20 pointer-events-none" />
-          <div className="absolute bottom-6 left-6 w-8 h-8 border-b-2 border-l-2 border-white/20 pointer-events-none" />
-          <div className="absolute bottom-6 right-6 w-8 h-8 border-b-2 border-r-2 border-white/20 pointer-events-none" />
+          <div className="absolute top-6 left-6 w-8 h-8 border-t-2 border-l-2 border-white/20 pointer-events-none z-10" />
+          <div className="absolute top-6 right-6 w-8 h-8 border-t-2 border-r-2 border-white/20 pointer-events-none z-10" />
+          <div className="absolute bottom-6 left-6 w-8 h-8 border-b-2 border-l-2 border-white/20 pointer-events-none z-10" />
+          <div className="absolute bottom-6 right-6 w-8 h-8 border-b-2 border-r-2 border-white/20 pointer-events-none z-10" />
 
           {/* Top Bar */}
           <div className="flex justify-between items-start w-full relative z-10">
@@ -38,14 +80,14 @@ export default function HeroBento() {
           </div>
 
           {/* Center Crosshair */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center opacity-20 pointer-events-none group-hover:scale-110 transition-transform duration-700">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center opacity-20 pointer-events-none group-hover:scale-110 transition-transform duration-700 z-10">
             <div className="w-16 h-[1px] bg-white absolute" />
             <div className="w-[1px] h-16 bg-white absolute" />
             <div className="w-6 h-6 border border-white rounded-full absolute" />
           </div>
 
           {/* Scrolling Marquee Background */}
-          <div className="absolute top-1/3 left-0 w-[200%] overflow-hidden flex whitespace-nowrap opacity-[0.04] pointer-events-none -rotate-3 -translate-y-1/2">
+          <div className="absolute top-1/3 left-0 w-[200%] overflow-hidden flex whitespace-nowrap opacity-[0.04] pointer-events-none -rotate-3 -translate-y-1/2 z-0">
             <motion.div
               animate={{ x: [0, -1000] }}
               transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
@@ -70,20 +112,17 @@ export default function HeroBento() {
           <motion.div 
             animate={{ y: [0, -20, 0], opacity: [0.3, 0.6, 0.3] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/4 right-1/4 w-32 h-32 bg-[#FF5A5F] rounded-full blur-[80px] pointer-events-none"
+            className="absolute top-1/4 right-1/4 w-32 h-32 bg-[#FF5A5F] rounded-full blur-[80px] pointer-events-none z-0"
           />
           <motion.div 
             animate={{ y: [0, 20, 0], opacity: [0.2, 0.4, 0.2] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-[#FFD166] rounded-full blur-[80px] pointer-events-none"
+            className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-[#FFD166] rounded-full blur-[80px] pointer-events-none z-0"
           />
           
           <div className="mt-auto relative z-10">
-            <h1 className="font-display text-[18vw] md:text-[11rem] leading-[0.8] text-[#FF5A5F] tracking-tighter uppercase drop-shadow-sm">
-              DISPOSABLE.
-            </h1>
             <p className="font-mono text-sm md:text-lg uppercase tracking-widest text-white/60 mt-6">
-              YOUR BRAND. YOUR STORY. YOUR STUDIO.
+              YOUR BRAND. YOUR STORY. OUR STUDIO.
             </p>
           </div>
         </motion.div>

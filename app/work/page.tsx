@@ -4,14 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import CameraFrame from "@/components/CameraFrame";
 
-export default function Work() {
-  const [activeFilter, setActiveFilter] = useState("All");
+export default function WorkPage() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
 
-  const filters = ["All", "Campaigns", "Reels", "UGC", "Studio"];
-
-  const projects = [
+  const allProjects = [
     {
       title: "Kayan X Fastrack",
       category: "Campaigns",
@@ -67,46 +67,46 @@ export default function Work() {
       tags: ["Event Coverage", "Social"],
       isBlog: false,
     },
+    {
+      title: "Birkenstock X Lakme Fashion Week",
+      category: "Campaigns",
+      image: "https://picsum.photos/seed/nykaa/800/600",
+      gallery: ["https://picsum.photos/seed/nykaa1/800/600", "https://picsum.photos/seed/nykaa2/800/600"],
+      description: "We took an iconic global heritage brand and placed it at the center of India’s premier fashion stage. For the Lakme Fashion Week Campaign, we focused on the intersection of high-fashion styling and timeless comfort, creating a visual narrative that felt both elevated and effortless.The accompanying Aftermovie captured the kinetic energy behind the scenes and on the runway, blending high-speed transitions with candid, stylistic frames. Together, these pieces served as a comprehensive digital record of the brand's presence, ensuring the momentum of the live event translated into a lasting, high-impact social experience.",
+      tags: ["Production", "Beauty"],
+      isBlog: false,
+    },
   ];
 
-  const filteredProjects =
-    activeFilter === "All"
-      ? projects
-      : projects.filter((p) => p.category === activeFilter);
-
   return (
-    <section id="work" className="bg-bg py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-          <div>
-            <span className="font-condensed font-bold uppercase tracking-widest text-accent text-sm mb-2 block">
-              Featured Work
-            </span>
-            <h2 className="font-display text-5xl md:text-6xl uppercase tracking-tight text-text">
-              OUR <span className="text-accent">PORTFOLIO</span>
-            </h2>
+    <main className="relative min-h-screen bg-bg text-text selection:bg-accent selection:text-white overflow-hidden">
+      <CameraFrame />
+      
+      {/* Background Blobs for Glassmorphism effect */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-accent/20 blur-[100px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-accent/20 blur-[100px]" />
+        <div className="absolute top-[40%] left-[60%] w-[30%] h-[30%] rounded-full bg-text/5 blur-[100px]" />
+      </div>
+
+      <div className="relative z-10 p-2 pt-12 md:p-16">
+        <Navbar />
+        
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-24">
+          <div className="mb-16">
+            <Link href="/" className="inline-block mb-8 font-condensed font-bold uppercase tracking-widest text-accent hover:text-white transition-colors">
+              &larr; Back to Home
+            </Link>
+            <h1 className="font-display text-6xl md:text-8xl uppercase tracking-tight text-text">
+              ALL <span className="text-accent">PROJECTS</span>
+            </h1>
+            <p className="font-sans text-xl text-text/80 mt-6 max-w-2xl">
+              A comprehensive look at our work across campaigns, reels, UGC, and studio production.
+            </p>
           </div>
 
-          <div className="flex flex-wrap gap-3">
-            {filters.map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
-                className={`px-4 py-2 font-condensed font-bold uppercase tracking-wider text-sm neo-border transition-colors ${
-                  activeFilter === filter
-                    ? "bg-accent text-white border-accent"
-                    : "bg-bg text-text border-border hover:border-accent"
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, i) => {
-            const ProjectCard = (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {allProjects.map((project, i) => (
               <div
                 key={i}
                 onClick={() => setSelectedProject(project)}
@@ -148,20 +148,11 @@ export default function Work() {
                   </div>
                 </div>
               </div>
-            );
-
-            return ProjectCard;
-          })}
+            ))}
+          </div>
         </div>
 
-        <div className="mt-16 flex justify-center">
-          <Link
-            href="/work"
-            className="px-8 py-4 bg-bg text-text font-condensed font-bold uppercase tracking-wider text-lg neo-border neo-shadow hover:-translate-y-1 transition-transform hover:bg-accent hover:text-white hover:border-accent"
-          >
-            View All Projects
-          </Link>
-        </div>
+        <Footer />
       </div>
 
       {/* Project Modal */}
@@ -250,7 +241,7 @@ export default function Work() {
                     </Link>
                   )}
                   <Link
-                    href="#contact"
+                    href="/#contact"
                     onClick={() => setSelectedProject(null)}
                     className="inline-block px-8 py-3 bg-black text-white font-condensed font-bold uppercase tracking-wider neo-border border-black hover:-translate-y-1 transition-transform w-full text-center"
                   >
@@ -262,6 +253,6 @@ export default function Work() {
           </div>
         )}
       </AnimatePresence>
-    </section>
+    </main>
   );
 }
