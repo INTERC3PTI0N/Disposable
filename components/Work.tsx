@@ -95,31 +95,37 @@ export default function Work({ limit, hideHeader = false }: { limit?: number; hi
                 </div>
 
                 <div className="font-sans text-gray-300 text-sm leading-relaxed flex-grow">
-                  {project.description.length > 150 && !expandedDescriptions[project.title] ? (
+                  {expandedDescriptions[project.title] ? (
                     <>
-                      {project.description.slice(0, 150)}...
+                      {project.description.map((para, idx) => (
+                        <p key={idx} className="mb-2">{para}</p>
+                      ))}
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           toggleExpand(project.title);
                         }}
-                        className="text-accent font-bold ml-1 hover:underline"
+                        className="text-accent font-bold ml-1 hover:underline block mt-2"
                       >
-                        Read More
+                        Show Less
                       </button>
                     </>
                   ) : (
                     <>
-                      {project.description}
-                      {project.description.length > 150 && (
+                      <p className="mb-2">
+                        {project.description[0].length > 150 
+                          ? `${project.description[0].slice(0, 150)}...` 
+                          : project.description[0]}
+                      </p>
+                      {(project.description.length > 1 || project.description[0].length > 150) && (
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             toggleExpand(project.title);
                           }}
-                          className="text-accent font-bold ml-1 hover:underline block mt-2"
+                          className="text-accent font-bold ml-1 hover:underline"
                         >
-                          Show Less
+                          Read More
                         </button>
                       )}
                     </>
@@ -208,9 +214,11 @@ export default function Work({ limit, hideHeader = false }: { limit?: number; hi
                 </div>
 
                 <div className="prose prose-invert max-w-none">
-                  <p className="font-sans text-text/80 text-lg leading-relaxed">
-                    {selectedProject.description}
-                  </p>
+                  {selectedProject.description.map((para: string, idx: number) => (
+                    <p key={idx} className="font-sans text-text/80 text-lg leading-relaxed mb-4">
+                      {para}
+                    </p>
+                  ))}
                 </div>
 
                 <div className="mt-auto pt-8 flex flex-col gap-4">
