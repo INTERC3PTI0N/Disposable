@@ -57,7 +57,7 @@ export default function Services() {
       },
       {
         num: "06",
-        icon: "💻",
+        icon: "❓",
         title: "Ready To Move The Needle?",
         desc: [
           "Whether you have a fully formed brief or just the spark of an idea, we’re ready to help you scale.",

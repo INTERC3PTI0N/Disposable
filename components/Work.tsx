@@ -6,7 +6,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { projects } from "@/lib/projects";
 
-export default function Work({ limit }: { limit?: number }) {
+export default function Work({ limit, hideHeader = false }: { limit?: number; hideHeader?: boolean }) {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [expandedDescriptions, setExpandedDescriptions] = useState<Record<string, boolean>>({});
@@ -27,7 +27,7 @@ export default function Work({ limit }: { limit?: number }) {
   return (
     <section id="work" className="bg-bg py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-        {!limit && (
+        {!hideHeader && (
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
             <div>
               <span className="font-condensed font-bold uppercase tracking-widest text-accent text-sm mb-2 block">
@@ -60,10 +60,10 @@ export default function Work({ limit }: { limit?: number }) {
           {displayProjects.map((project, i) => (
             <div
               key={i}
-              className="group relative bg-bg2/60 backdrop-blur-md neo-border neo-shadow transition-all duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--shadow)] overflow-hidden h-full flex flex-col"
+              className="group relative bg-[#1a1a1a] neo-border border-accent neo-shadow transition-all duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--shadow)] overflow-hidden h-full flex flex-col"
             >
               <div
-                className="relative h-64 w-full border-b-[3px] border-border overflow-hidden cursor-pointer"
+                className="relative h-64 w-full border-b-[3px] border-accent overflow-hidden cursor-pointer"
                 onClick={() => setSelectedProject(project)}
               >
                 <Image
@@ -73,18 +73,12 @@ export default function Work({ limit }: { limit?: number }) {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-multiply" />
               </div>
 
               <div className="p-6 flex flex-col gap-4 flex-grow">
-                <div className="flex justify-between items-start">
-                  <h3 className="font-condensed font-bold text-2xl uppercase tracking-wide text-text">
-                    {project.title}
-                  </h3>
-                  <span className="text-accent text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-x-[-10px] group-hover:translate-x-0">
-                    {project.isBlog ? "↗" : "→"}
-                  </span>
-                </div>
+                <h3 className="font-condensed font-bold text-2xl uppercase tracking-wide text-white">
+                  {project.title}
+                </h3>
 
                 <div className="flex flex-wrap gap-2">
                   <span className="px-3 py-1 bg-accent text-white font-condensed font-bold uppercase tracking-wider text-xs neo-border border-accent">
@@ -93,19 +87,22 @@ export default function Work({ limit }: { limit?: number }) {
                   {project.tags.map((tag, j) => (
                     <span
                       key={j}
-                      className="px-3 py-1 bg-bg text-text font-condensed font-bold uppercase tracking-wider text-xs neo-border border-border/50"
+                      className="px-3 py-1 bg-transparent text-white font-condensed font-bold uppercase tracking-wider text-xs neo-border border-accent"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="font-sans text-text/80 text-sm leading-relaxed flex-grow">
+                <div className="font-sans text-gray-300 text-sm leading-relaxed flex-grow">
                   {project.description.length > 150 && !expandedDescriptions[project.title] ? (
                     <>
                       {project.description.slice(0, 150)}...
                       <button
-                        onClick={() => toggleExpand(project.title)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleExpand(project.title);
+                        }}
                         className="text-accent font-bold ml-1 hover:underline"
                       >
                         Read More
@@ -116,7 +113,10 @@ export default function Work({ limit }: { limit?: number }) {
                       {project.description}
                       {project.description.length > 150 && (
                         <button
-                          onClick={() => toggleExpand(project.title)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleExpand(project.title);
+                          }}
                           className="text-accent font-bold ml-1 hover:underline block mt-2"
                         >
                           Show Less
