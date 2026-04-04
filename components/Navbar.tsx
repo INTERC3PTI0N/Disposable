@@ -47,19 +47,19 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Studios", href: "#studios" },
-    { name: "Work", href: "#work" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/#home" },
+    { name: "About", href: "/#about" },
+    { name: "Services", href: "/#services" },
+    { name: "Studios", href: "/#studios" },
+    { name: "Work", href: "/#work" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
     <nav className="fixed top-12 left-2 right-2 md:top-16 md:left-16 md:right-16 z-50 h-16 bg-bg/70 backdrop-blur-md border-[3px] border-accent flex items-center justify-between px-4 md:px-8">
       <div className="flex items-center">
         <Link
-          href="#home"
+          href="/#home"
           className="font-display text-3xl tracking-wide flex items-center gap-1"
         >
           <span className="text-accent">DISPOSABLE</span>
@@ -74,7 +74,7 @@ export default function Navbar() {
             key={link.name}
             href={link.href}
             className={`font-condensed font-bold uppercase tracking-[0.12em] text-sm px-3 py-1 neo-border transition-colors ${
-              activeSection === link.href.substring(1)
+              activeSection === link.href.substring(2)
                 ? "bg-accent text-white border-accent"
                 : "border-transparent hover:border-accent"
             }`}
@@ -98,7 +98,7 @@ export default function Navbar() {
         </button>
 
         <Link
-          href="#contact"
+          href="/#contact"
           className="hidden md:inline-flex items-center justify-center px-6 py-2 bg-accent text-white font-condensed font-bold uppercase tracking-wider neo-border neo-shadow"
         >
           Let&apos;s Talk
@@ -126,7 +126,7 @@ export default function Navbar() {
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
               className={`font-condensed font-bold uppercase tracking-[0.12em] text-lg p-4 border-b-[3px] border-transparent hover:border-accent ${
-                activeSection === link.href.substring(1)
+                activeSection === link.href.substring(2)
                   ? "text-accent"
                   : "text-text"
               }`}
@@ -135,7 +135,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="#contact"
+            href="/#contact"
             onClick={() => setIsMobileMenuOpen(false)}
             className="mt-4 inline-flex items-center justify-center px-6 py-4 bg-accent text-white font-condensed font-bold uppercase tracking-wider neo-border neo-shadow text-lg"
           >

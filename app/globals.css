@@ -107,5 +107,25 @@ body {
 }
 
 .animate-ticker {
-  animation: ticker 20s linear infinite;
+  animation: ticker 30s linear infinite;
+}
+
+@keyframes ticker-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-ticker-reverse {
+  animation: ticker-reverse 30s linear infinite;
+}
+
+.group:hover .animate-ticker,
+.group:hover .animate-ticker-reverse,
+.animate-ticker:hover,
+.animate-ticker-reverse:hover {
+  animation-play-state: paused !important;
 }

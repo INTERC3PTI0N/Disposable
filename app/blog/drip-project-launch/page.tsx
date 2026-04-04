@@ -23,7 +23,7 @@ export default function BlogPost() {
         
         <article className="max-w-4xl mx-auto px-4 md:px-8 py-24">
           <div className="mb-12">
-            <Link href="/work" className="inline-block mb-8 font-condensed font-bold uppercase tracking-widest text-accent hover:text-white transition-colors">
+            <Link href="/#work" className="inline-block mb-8 font-condensed font-bold uppercase tracking-widest text-accent hover:text-white transition-colors">
               &larr; Back to Work
             </Link>
             

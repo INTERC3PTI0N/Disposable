@@ -6,7 +6,8 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    type: "Campaign",
+    whatsapp: "",
+    type: "Content Production",
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "success">("idle");
@@ -17,7 +18,7 @@ export default function Contact() {
     console.log(formData);
     setStatus("success");
     setTimeout(() => setStatus("idle"), 5000);
-    setFormData({ name: "", email: "", type: "Campaign", message: "" });
+    setFormData({ name: "", email: "", whatsapp: "", type: "Content Production", message: "" });
   };
 
   return (
@@ -137,6 +138,26 @@ export default function Contact() {
 
             <div className="flex flex-col gap-2">
               <label
+                htmlFor="whatsapp"
+                className="font-condensed font-bold uppercase tracking-wider text-text text-sm"
+              >
+                WhatsApp Number
+              </label>
+              <input
+                type="tel"
+                id="whatsapp"
+                required
+                className="bg-bg/60 backdrop-blur-sm border-[3px] border-border p-4 font-sans text-text focus:outline-none focus:border-accent transition-colors"
+                placeholder="+91 00000 00000"
+                value={formData.whatsapp}
+                onChange={(e) =>
+                  setFormData({ ...formData, whatsapp: e.target.value })
+                }
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label
                 htmlFor="type"
                 className="font-condensed font-bold uppercase tracking-wider text-text text-sm"
               >
@@ -151,9 +172,10 @@ export default function Contact() {
                     setFormData({ ...formData, type: e.target.value })
                   }
                 >
-                  <option value="Campaign">Full Campaign</option>
-                  <option value="Reels">Reels / Content Shoot</option>
-                  <option value="Studio">Studio Rental</option>
+                  <option value="Content Production">Content Production</option>
+                  <option value="Full Campaign">Full Campaign</option>
+                  <option value="UI/UX Services">UI/UX Services</option>
+                  <option value="Web Development Services">Web Development Services</option>
                   <option value="Other">Other</option>
                 </select>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-text">

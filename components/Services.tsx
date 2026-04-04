@@ -4,77 +4,71 @@ import Link from "next/link";
 
 export default function Services() {
   const services = [
-    {
-      num: "01",
-      icon: "🧠",
-      title: "Strategy & Campaigns",
-      desc: [
-        "We map out the digital landscape to ensure your brand isn't just present, but dominant.",
-        "Every campaign is backed by data-driven trend analysis and a roadmap designed for long-term growth."
-      ],
-      tags: ["Trend Planning", "Content Maps", "Creative Direction"],
-      featured: true,
-    },
-    {
-      num: "02",
-      icon: "📱",
-      title: "Reels & Content Shoots",
-      desc: [
-        "Whether it’s high-octane mobile content or polished cinematic production, we deliver visuals that stop the scroll.",
-        "We handle the entire lifecycle of a shoot, from the initial capture to the final high-energy cut."
-      ],
-      tags: ["Reels", "Pro Shoots", "Editing"],
-      featured: false,
-    },
-    {
-      num: "03",
-      icon: "🤝",
-      title: "Influencer & UGC",
-      desc: [
-        "We bridge the gap between brands and creators to build authentic trust with your target audience.",
-        "Our team manages the entire pipeline, finding the right faces and writing the scripts that feel real."
-      ],
-      tags: ["Casting", "Scripting", "Collabs"],
-      featured: false,
-    },
-    {
-      num: "04",
-      icon: "🎬",
-      title: "Studio Production",
-      desc: [
-        "Our in-house studio is built for high-speed, high-quality output with maximum flexibility for any scale of production.",
-        "You can simply rent the space for your own vision or bring in our expert crew to manage the floor."
-      ],
-      tags: ["Studio Rental", "Full Crew", "Flexible Booking"],
-      featured: false,
-    },
-    {
-      num: "05",
-      icon: "💻",
-      title: "Web & App Dev",
-      desc: [
-        "We build high-performance digital storefronts and platforms that act as the permanent, scalable home for your brand.",
-        "Our development team ensures the user experience is as seamless and engaging as your content."
-      ],
-      tags: ["Web Design", "App Dev", "UI/UX"],
-      featured: false,
-      isLink: true,
-    },
-    {
-      num: "06",
-      icon: "💻",
-      title: "Ready To Move The Needle?",
-      desc: [
-        "Whether you have a fully formed brief or just the spark of an idea, we’re ready to help you scale.",
-        "Let’s turn your brand’s vision into content that actually works and moves people online."
-      ],
-      tags: [],
-      featured: false,
-      isLink: false,
-      cta: "Let's Talk",
-      ctaLink: "#contact"
-    },
-  ];
+      {
+        num: "01",
+        icon: "🧠",
+        title: "Strategy & Campaigns",
+        desc: [
+          "We map out the digital landscape to ensure your brand isn't just present, but dominant.",
+          "Every campaign is backed by data-driven trend analysis and a roadmap designed for long-term growth."
+        ],
+        tags: ["Trend Planning", "Content Maps", "Creative Direction"],
+      },
+      {
+        num: "02",
+        icon: "📱",
+        title: "Reels & Content Shoots",
+        desc: [
+          "Whether it’s high-octane mobile content or polished cinematic production, we deliver visuals that stop the scroll.",
+          "We handle the entire lifecycle of a shoot, from the initial capture to the final high-energy cut."
+        ],
+        tags: ["Reels", "Pro Shoots", "Editing"],
+      },
+      {
+        num: "03",
+        icon: "🤝",
+        title: "Influencer & UGC",
+        desc: [
+          "We bridge the gap between brands and creators to build authentic trust with your target audience.",
+          "Our team manages the entire pipeline, finding the right faces and writing the scripts that feel real."
+        ],
+        tags: ["Casting", "Scripting", "Collabs"],
+      },
+      {
+        num: "04",
+        icon: "🎬",
+        title: "Studio Production",
+        desc: [
+          "Our in-house studio is built for high-speed, high-quality output with maximum flexibility for any scale of production.",
+          "You can simply rent the space for your own vision or bring in our expert crew to manage the floor."
+        ],
+        tags: ["Studio Rental", "Full Crew", "Flexible Booking"],
+      },
+      {
+        num: "05",
+        icon: "💻",
+        title: "Web & App Dev",
+        desc: [
+          "We build high-performance digital storefronts and platforms that act as the permanent, scalable home for your brand.",
+          "Our development team ensures the user experience is as seamless and engaging as your content."
+        ],
+        tags: ["Web Design", "App Dev", "UI/UX"],
+        isLink: true,
+      },
+      {
+        num: "06",
+        icon: "💻",
+        title: "Ready To Move The Needle?",
+        desc: [
+          "Whether you have a fully formed brief or just the spark of an idea, we’re ready to help you scale.",
+          "Let’s turn your brand’s vision into content that actually works and moves people online."
+        ],
+        tags: [],
+        isLink: false,
+        cta: "Let's Talk",
+        ctaLink: "/#contact"
+      },
+    ];
 
   return (
     <section id="services" className="bg-bg py-16 md:py-24">
@@ -92,7 +86,7 @@ export default function Services() {
           {services.map((service, i) => {
             const content = (
               <div
-                className={`relative h-full p-8 flex flex-col gap-6 neo-border neo-shadow transition-all duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--shadow)] backdrop-blur-md ${service.featured ? "bg-accent/90 text-white border-black" : "bg-bg/60 text-text"}`}
+                className="relative h-full p-8 flex flex-col gap-6 neo-border neo-shadow transition-all duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--shadow)] backdrop-blur-md bg-bg/60 text-text hover:bg-accent/90 hover:text-white hover:border-black group"
               >
                 <div className="text-4xl">{service.icon}</div>
 
@@ -104,14 +98,14 @@ export default function Services() {
                     service.desc.map((paragraph, idx) => (
                       <p
                         key={idx}
-                        className={`font-sans text-lg ${service.featured ? "text-white/90" : "text-text/80"}`}
+                        className="font-sans text-lg text-text/80 group-hover:text-white/90"
                       >
                         {paragraph}
                       </p>
                     ))
                   ) : (
                     <p
-                      className={`font-sans text-lg ${service.featured ? "text-white/90" : "text-text/80"}`}
+                      className="font-sans text-lg text-text/80 group-hover:text-white/90"
                     >
                       {service.desc}
                     </p>
@@ -122,7 +116,7 @@ export default function Services() {
                   <div className="mt-4 z-10">
                     <Link
                       href={service.ctaLink}
-                      className="inline-block px-6 py-2 bg-accent text-white font-condensed font-bold uppercase tracking-wider neo-border neo-shadow-sm hover:-translate-y-1 transition-transform"
+                      className="inline-block px-6 py-2 bg-accent text-white font-condensed font-bold uppercase tracking-wider neo-border neo-shadow-sm hover:-translate-y-1 transition-transform group-hover:bg-white group-hover:text-accent"
                     >
                       {service.cta}
                     </Link>
@@ -133,14 +127,14 @@ export default function Services() {
                   {service.tags.map((tag, j) => (
                     <span
                       key={j}
-                      className={`px-3 py-1 text-xs font-condensed font-bold uppercase tracking-wider neo-border ${service.featured ? "bg-black/20 border-black/30" : "bg-bg2 border-border/20"}`}
+                      className="px-3 py-1 text-xs font-condensed font-bold uppercase tracking-wider neo-border bg-bg2 border-border/20 group-hover:bg-black/20 group-hover:border-black/30"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="absolute bottom-6 right-6 text-2xl font-bold opacity-50">
+                <div className="absolute bottom-6 right-6 text-2xl font-bold opacity-50 group-hover:text-white">
                   {service.isLink ? "↗" : "→"}
                 </div>
               </div>
@@ -148,7 +142,7 @@ export default function Services() {
 
             if (service.isLink) {
               return (
-                <Link key={i} href="#" className="block h-full">
+                <Link key={i} href="https://techlinque.com" target="_blank" rel="noopener noreferrer" className="block h-full">
                   {content}
                 </Link>
               );
@@ -168,7 +162,7 @@ export default function Services() {
                 Need something else?
               </h3>
               <Link
-                href="#contact"
+                href="/#contact"
                 className="px-8 py-3 bg-accent text-white font-condensed font-bold uppercase tracking-wider neo-border neo-shadow hover:-translate-y-1 transition-transform"
               >
                 Shoot A Message &rarr;

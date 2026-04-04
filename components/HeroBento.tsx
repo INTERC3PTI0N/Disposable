@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function HeroBento() {
   return (
@@ -23,28 +24,28 @@ export default function HeroBento() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="relative overflow-hidden rounded-lg"
               >
-                <img src="https://picsum.photos/seed/shoot1/800/600" alt="Shoot 1" className="w-full h-full object-cover grayscale sepia-[0.2]" />
+                <Image src="https://picsum.photos/seed/shoot1/800/600" alt="Shoot 1" fill className="object-cover grayscale sepia-[0.2]" referrerPolicy="no-referrer" />
               </motion.div>
               <motion.div 
                 animate={{ scale: [1.05, 1, 1.05], opacity: [0.8, 0.6, 0.8] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                 className="relative overflow-hidden rounded-lg"
               >
-                <img src="https://picsum.photos/seed/shoot2/800/600" alt="Shoot 2" className="w-full h-full object-cover grayscale brightness-75" />
+                <Image src="https://picsum.photos/seed/shoot2/800/600" alt="Shoot 2" fill className="object-cover grayscale brightness-75" referrerPolicy="no-referrer" />
               </motion.div>
               <motion.div 
                 animate={{ scale: [1, 1.1, 1], opacity: [0.6, 0.8, 0.6] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 className="relative overflow-hidden rounded-lg"
               >
-                <img src="https://picsum.photos/seed/shoot3/800/600" alt="Shoot 3" className="w-full h-full object-cover grayscale contrast-125" />
+                <Image src="https://picsum.photos/seed/shoot3/800/600" alt="Shoot 3" fill className="object-cover grayscale contrast-125" referrerPolicy="no-referrer" />
               </motion.div>
               <motion.div 
                 animate={{ scale: [1.1, 1, 1.1], opacity: [0.9, 0.7, 0.9] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
                 className="relative overflow-hidden rounded-lg"
               >
-                <img src="https://picsum.photos/seed/shoot4/800/600" alt="Shoot 4" className="w-full h-full object-cover grayscale sepia-[0.1]" />
+                <Image src="https://picsum.photos/seed/shoot4/800/600" alt="Shoot 4" fill className="object-cover grayscale sepia-[0.1]" referrerPolicy="no-referrer" />
               </motion.div>
             </div>
             
@@ -128,22 +129,24 @@ export default function HeroBento() {
         </motion.div>
 
         {/* Top Right Block */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 flex flex-col justify-center gap-6 group hover:bg-[#1a1a1a]/90 transition-colors"
-        >
-          <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-[10px] text-white/60">
-            04
-          </div>
-          <div>
-            <h2 className="font-display text-4xl md:text-5xl uppercase text-white mb-3">PORTFOLIO</h2>
-          </div>
-        </motion.div>
+        <Link href="/work" className="block h-full">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="h-full bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 flex flex-col justify-center gap-6 group hover:bg-[#1a1a1a]/90 transition-colors cursor-pointer"
+          >
+            <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-[10px] text-white/60">
+              04
+            </div>
+            <div>
+              <h2 className="font-display text-4xl md:text-5xl uppercase text-white mb-3">PORTFOLIO</h2>
+            </div>
+          </motion.div>
+        </Link>
 
         {/* Middle Right Block */}
-        <Link href="#contact" className="block h-full">
+        <Link href="/#contact" className="block h-full">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -165,52 +168,58 @@ export default function HeroBento() {
         </Link>
 
         {/* Bottom Left Block */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 flex flex-col justify-center gap-6 group hover:bg-[#1a1a1a]/90 transition-colors"
-        >
-          <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-[10px] text-white/60">
-            01
-          </div>
-          <div>
-            <h2 className="font-display text-3xl md:text-4xl uppercase text-white mb-3">DISPOSABLE FILMS</h2>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">YOUR BRAND. OUR LENS.</p>
-          </div>
-        </motion.div>
+        <Link href="/#about" className="block h-full">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="h-full bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 flex flex-col justify-center gap-6 group hover:bg-[#1a1a1a]/90 transition-colors cursor-pointer"
+          >
+            <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-[10px] text-white/60">
+              01
+            </div>
+            <div>
+              <h2 className="font-display text-3xl md:text-4xl uppercase text-white mb-3">DISPOSABLE FILMS</h2>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">YOUR BRAND. OUR LENS.</p>
+            </div>
+          </motion.div>
+        </Link>
 
         {/* Bottom Middle Block (Yellow/Accent) */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 flex flex-col justify-center gap-6 group hover:bg-[#1a1a1a]/90 transition-colors"
-        >
-          <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-[10px] text-white/60">
-            02
-          </div>
-          <div>
-            <h2 className="font-display text-3xl md:text-4xl uppercase text-white mb-3">DISPOSABLE STUDIOS</h2>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">RENT. SHOOT. CREATE.</p>
-          </div>
-        </motion.div>
+        <Link href="/#studios" className="block h-full">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="h-full bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 flex flex-col justify-center gap-6 group hover:bg-[#1a1a1a]/90 transition-colors cursor-pointer"
+          >
+            <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-[10px] text-white/60">
+              02
+            </div>
+            <div>
+              <h2 className="font-display text-3xl md:text-4xl uppercase text-white mb-3">DISPOSABLE STUDIOS</h2>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">RENT. SHOOT. CREATE.</p>
+            </div>
+          </motion.div>
+        </Link>
 
         {/* Bottom Right Block */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 flex flex-col justify-center gap-6 group hover:bg-[#1a1a1a]/90 transition-colors"
-        >
-          <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-[10px] text-white/60">
-            03
-          </div>
-          <div>
-            <h2 className="font-display text-3xl md:text-4xl uppercase text-white mb-3">TECHLINQUE</h2>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">WEB DEV / SEO / GROWTH</p>
-          </div>
-        </motion.div>
+        <a href="https://techlinque.com" target="_blank" rel="noopener noreferrer" className="block h-full">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="h-full bg-[#141414]/80 backdrop-blur-md rounded-2xl neo-border neo-shadow p-8 flex flex-col justify-center gap-6 group hover:bg-[#1a1a1a]/90 transition-colors cursor-pointer"
+          >
+            <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-[10px] text-white/60">
+              03
+            </div>
+            <div>
+              <h2 className="font-display text-3xl md:text-4xl uppercase text-white mb-3">TECHLINQUE</h2>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">WEB DEV / SEO / GROWTH</p>
+            </div>
+          </motion.div>
+        </a>
 
       </div>
     </section>

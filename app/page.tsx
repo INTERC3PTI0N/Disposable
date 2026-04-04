@@ -33,7 +33,7 @@ export default function Home() {
         <Brands />
         <Services />
         <Studios />
-        <Work />
+        <Work limit={6} />
         <Testimonials />
         <Contact />
         <Footer />

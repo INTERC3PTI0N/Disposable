@@ -94,7 +94,7 @@ export default function WorkPage() {
         
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-24">
           <div className="mb-16">
-            <Link href="/" className="inline-block mb-8 font-condensed font-bold uppercase tracking-widest text-accent hover:text-white transition-colors">
+            <Link href="/#home" className="inline-block mb-8 font-condensed font-bold uppercase tracking-widest text-accent hover:text-white transition-colors">
               &larr; Back to Home
             </Link>
             <h1 className="font-display text-6xl md:text-8xl uppercase tracking-tight text-text">

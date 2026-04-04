@@ -45,13 +45,20 @@ export default function Footer() {
             <h4 className="font-condensed font-bold uppercase tracking-widest text-text mb-2">
               Navigation
             </h4>
-            {["Home", "About", "Services", "Work", "Contact"].map((link) => (
+            {[
+              { name: "Home", href: "/#home" },
+              { name: "About", href: "/#about" },
+              { name: "Services", href: "/#services" },
+              { name: "Studios", href: "/#studios" },
+              { name: "Work", href: "/#work" },
+              { name: "Contact", href: "/#contact" }
+            ].map((link) => (
               <Link
-                key={link}
-                href={`#${link.toLowerCase()}`}
+                key={link.name}
+                href={link.href}
                 className="font-sans text-text/80 hover:text-accent transition-colors w-fit"
               >
-                {link}
+                {link.name}
               </Link>
             ))}
           </div>

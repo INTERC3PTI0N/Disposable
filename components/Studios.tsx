@@ -141,7 +141,15 @@ export default function Studios() {
                   className="overflow-hidden"
                 >
                   <p className="font-sans text-white/80">
-                    Every vision needs a home. Disposable Studios is our dedicated, in-house creative space in Mumbai, designed specifically to meet the fast-paced demands of modern content production.
+                    Every vision needs a home. <strong>Disposable Studios</strong> is our dedicated, in-house creative space in Mumbai, designed specifically to meet the fast-paced demands of modern content production.
+                  </p>
+                  <br/>
+                  <p className="font-sans text-white/80">
+                    Whether it’s a high-concept fashion shoot, a streamlined social media series, or a full-scale commercial campaign.
+                  </p>
+                  <br/>
+                  <p className="font-sans text-white/80">
+                    Having our own space means we eliminate the friction of external logistics, allowing us to focus entirely on what matters: the craft, the lighting, and the output.
                   </p>
                 </motion.div>
               )}
@@ -165,7 +173,7 @@ export default function Studios() {
 
           <div className="flex flex-wrap gap-4 mt-8">
             <Link
-              href="#contact"
+              href="/#contact"
               className="px-8 py-3 bg-white text-accent font-condensed font-bold uppercase tracking-wider neo-border border-black neo-shadow hover:-translate-y-1 transition-transform"
             >
               Book the Studio

@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from 'motion/react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Brands() {
   const brands = [
@@ -33,48 +33,48 @@ export default function Brands() {
         <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-bg to-transparent z-10 pointer-events-none" />
 
         {/* Row 1 - Moves Left */}
-        <motion.div
-          className="flex items-center gap-12 md:gap-24 whitespace-nowrap w-max"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ ease: "linear", duration: 30, repeat: Infinity }}
-        >
-          {duplicatedBrands.map((brand, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 w-32 md:w-48 h-16 relative flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-            >
-              <Image
-                src={brand.logo}
-                alt={brand.name}
-                fill
-                className="object-contain"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-          ))}
-        </motion.div>
+        <Link href="/#work" className="block group">
+          <div
+            className="flex items-center gap-12 md:gap-24 whitespace-nowrap w-max animate-ticker"
+          >
+            {duplicatedBrands.map((brand, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 w-32 md:w-48 h-16 relative flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+              >
+                <Image
+                  src={brand.logo}
+                  alt={brand.name}
+                  fill
+                  className="object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ))}
+          </div>
+        </Link>
 
         {/* Row 2 - Moves Right */}
-        <motion.div
-          className="flex items-center gap-12 md:gap-24 whitespace-nowrap w-max"
-          animate={{ x: ["-50%", "0%"] }}
-          transition={{ ease: "linear", duration: 30, repeat: Infinity }}
-        >
-          {duplicatedBrands.map((brand, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 w-32 md:w-48 h-16 relative flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-            >
-              <Image
-                src={brand.logo}
-                alt={brand.name}
-                fill
-                className="object-contain"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-          ))}
-        </motion.div>
+        <Link href="/#work" className="block group">
+          <div
+            className="flex items-center gap-12 md:gap-24 whitespace-nowrap w-max animate-ticker-reverse"
+          >
+            {duplicatedBrands.map((brand, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 w-32 md:w-48 h-16 relative flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+              >
+                <Image
+                  src={brand.logo}
+                  alt={brand.name}
+                  fill
+                  className="object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ))}
+          </div>
+        </Link>
       </div>
     </section>
   );
