@@ -5,15 +5,11 @@ import Link from 'next/link';
 
 export default function Brands() {
   const brands = [
-    { name: 'KFC', logo: 'https://picsum.photos/seed/kfc/200/100' },
-    { name: 'Lodha', logo: 'https://picsum.photos/seed/lodha/200/100' },
-    { name: 'Shadowfax', logo: 'https://picsum.photos/seed/shadowfax/200/100' },
-    { name: 'Saatchi', logo: 'https://picsum.photos/seed/saatchi/200/100' },
-    { name: 'D.Y. Patil', logo: 'https://picsum.photos/seed/dypatil/200/100' },
-    { name: 'Mumbai Indians', logo: 'https://picsum.photos/seed/mumbaiindians/200/100' },
-    { name: 'Salus', logo: 'https://picsum.photos/seed/salus/200/100' },
-    { name: 'Sarvatra', logo: 'https://picsum.photos/seed/sarvatra/200/100' },
-    { name: 'MuSo', logo: 'https://picsum.photos/seed/muso/200/100' },
+    { name: 'Birkenstock', logo: '/logos/Birken_White.png' },
+    { name: 'Crocs', logo: '/logos/Crocs_White.png' },
+    { name: 'Drip Project', logo: '/logos/Drip_Project_White.png' },
+    { name: 'Jack & Jones', logo: '/logos/Jack&Jones_White.png' },
+    { name: 'Rama Krishna', logo: '/logos/RamaKrishna_White.png' },
   ];
 
   // Duplicate the array to create a seamless loop
