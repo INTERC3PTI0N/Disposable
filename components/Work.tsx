@@ -70,7 +70,7 @@ export default function Work({ limit, hideHeader = false }: { limit?: number; hi
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-contain transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -179,7 +179,7 @@ export default function Work({ limit, hideHeader = false }: { limit?: number; hi
                       src={img}
                       alt={`${selectedProject.title} - Image ${idx + 1}`}
                       fill
-                      className="object-cover"
+                      className="object-contain"
                       referrerPolicy="no-referrer"
                     />
                   </div>
