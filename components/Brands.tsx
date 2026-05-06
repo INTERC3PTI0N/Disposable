@@ -5,12 +5,14 @@ import Link from 'next/link';
 
 export default function Brands() {
   const brands = [
-    { name: 'Birkenstock', logo: '/logos/Birken_White.png' },
-    { name: 'Red Bull', logo: '/logos/RedBull_White.png' },
+    { name: 'Birkenstock', logo: '/logos/birkenstock-logo.png' },
+    { name: 'Fastrack', logo: '/logos/Fastrack.png' },
+    { name: 'Spotify', logo: '/logos/Spotify.png' },
+    { name: 'Red Bull', logo: '/logos/Red-Bull-logo.png' },
     { name: 'Crocs', logo: '/logos/Crocs.png' },
-    { name: 'Drip Project', logo: '/logos/Drip_Project_White.png' },
-    { name: 'Jack & Jones', logo: '/logos/Jack&Jones_White.png' },
-    { name: 'Rama Krishna', logo: '/logos/RamaKrishna_White.png' },
+    { name: 'Drip Project', logo: '/logos/Drip_Project.png' },
+    { name: 'Jack & Jones', logo: '/logos/Jack&Jones.png' },
+    { name: 'Rama Krishna', logo: '/logos/Rama_Krishna.png' },
   ];
 
   // Duplicate the array to create a seamless loop
