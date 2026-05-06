@@ -7,7 +7,7 @@ export default function Brands() {
   const brands = [
     { name: 'Birkenstock', logo: '/logos/Birken_White.png' },
     { name: 'Red Bull', logo: '/logos/RedBull_White.png' },
-    { name: 'Crocs', logo: '/logos/Crocs_White.png' },
+    { name: 'Crocs', logo: '/logos/Crocs.png' },
     { name: 'Drip Project', logo: '/logos/Drip_Project_White.png' },
     { name: 'Jack & Jones', logo: '/logos/Jack&Jones_White.png' },
     { name: 'Rama Krishna', logo: '/logos/RamaKrishna_White.png' },
