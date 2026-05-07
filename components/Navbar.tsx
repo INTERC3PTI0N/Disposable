@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import DisposableLogo from "../public/logos/DisposableLogo.png";
 
 export default function Navbar() {
   const [theme, setTheme] = useState("dark");
@@ -60,10 +62,13 @@ export default function Navbar() {
       <div className="flex items-center">
         <Link
           href="/#home"
-          className="font-display text-3xl tracking-wide flex items-center gap-1"
+          className="flex items-center gap-1"
         >
-          <span className="text-accent">DISPOSABLE</span>
-          <span className="text-text">FILMS</span>
+          <Image
+            src={DisposableLogo}
+            alt="Disposable Films"
+            className="h-25 w-auto object-contain"
+          />
         </Link>
       </div>
 

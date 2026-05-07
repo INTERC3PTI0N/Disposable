@@ -5,7 +5,7 @@ export const projects = [
     image: "/logos/fastrack_White.png",
     gallery: [],
     description: ["To launch Fastrack's latest smart wearable, we merged high-concept futurism with sharp, street-ready fashion. The production focused on a high-speed rhythmic edit that mirrors the agility of the tech itself. We created a visual world, where sleek, futuristic elements meet fashion sensibilities, highlighting the watch as the centrepiece of a tech forward lifestyle."],
-    tags: ["Content Production"],
+    tags: ["Content Production"]  ,
     isBlog: false,
   },
   {

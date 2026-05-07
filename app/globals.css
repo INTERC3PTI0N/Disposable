@@ -4,6 +4,7 @@
   --font-sans: var(--font-barlow);
   --font-display: var(--font-bebas);
   --font-condensed: var(--font-barlow-condensed);
+  --font-glitch: var(--font-rubik-glitch);
 
   --color-bg: var(--bg);
   --color-bg2: var(--bg2);
@@ -20,9 +21,9 @@
   --bg2: #141414;
   --bg3: #1a1a1a;
   --text: #f5f0e8;
-  --accent: #FF5500;
-  --border: #FF5500;
-  --shadow: #FF5500;
+  --accent: #c93c3c;
+  --border: #c93c3c;
+  --shadow: #c93c3c;
 }
 
 :root[data-theme="light"] {
@@ -31,7 +32,7 @@
   --bg2: #e8e2d5;
   --bg3: #dcd4c3;
   --text: #0a0a0a;
-  --accent: #FF5500;
+  --accent: #c93c3c;
   --border: #0a0a0a;
   --shadow: #0a0a0a;
 }

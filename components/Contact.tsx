@@ -12,13 +12,28 @@ export default function Contact() {
   });
   const [status, setStatus] = useState<"idle" | "success">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
-    setStatus("success");
-    setTimeout(() => setStatus("idle"), 5000);
-    setFormData({ name: "", email: "", whatsapp: "", type: "Content Production", message: "" });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setTimeout(() => setStatus("idle"), 5000);
+        setFormData({ name: "", email: "", whatsapp: "", type: "Content Production", message: "" });
+      } else {
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred. Please try again.");
+    }
   };
 
   return (

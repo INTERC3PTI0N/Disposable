@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Barlow_Condensed, Barlow } from "next/font/google";
+import { Bebas_Neue, Barlow_Condensed, Barlow, Rubik_Glitch } from "next/font/google";
 import "./globals.css"; // Global styles
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-bebas",
+});
+
+const rubikGlitch = Rubik_Glitch({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-rubik-glitch",
 });
 
 const barlowCondensed = Barlow_Condensed({
@@ -35,7 +41,7 @@ export default function RootLayout({
       lang="en"
       data-theme="dark"
       suppressHydrationWarning
-      className={`${bebasNeue.variable} ${barlowCondensed.variable} ${barlow.variable}`}
+      className={`${bebasNeue.variable} ${barlowCondensed.variable} ${barlow.variable} ${rubikGlitch.variable}`}
     >
       <head>
         <script
