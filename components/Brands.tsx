@@ -52,28 +52,6 @@ export default function Brands() {
             ))}
           </div>
         </Link>
-
-        {/* Row 2 - Moves Right */}
-        <Link href="/#work" className="block group">
-          <div
-            className="flex items-center gap-12 md:gap-24 whitespace-nowrap w-max animate-ticker-reverse"
-          >
-            {duplicatedBrands.map((brand, i) => (
-              <div
-                key={i}
-                className="flex-shrink-0 w-32 md:w-48 h-16 relative flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-              >
-                <Image
-                  src={brand.logo}
-                  alt={brand.name}
-                  fill
-                  className="object-contain"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-            ))}
-          </div>
-        </Link>
       </div>
     </section>
   );
