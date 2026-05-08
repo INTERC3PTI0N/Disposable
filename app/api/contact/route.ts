@@ -19,8 +19,8 @@ export async function POST(req: Request) {
     const { name, email, whatsapp, type, message } = await req.json();
 
     const data = await getResend().emails.send({
-      from: 'Disposable Films <onboarding@resend.dev>',
-      to: 'milnedunk2@gmail.com',
+      from: 'Disposable Films <noreply@disposablefilms.com>',
+      to: 'saad@techlinque.com',
       subject: `New enquiry request from ${name} (${type})`,
       text: `
         Contact Name: ${name}
