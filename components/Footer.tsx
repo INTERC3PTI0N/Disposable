@@ -60,7 +60,7 @@ export default function Footer() {
               >
                 {link.name}
               </Link>
-            ))}
+            ))} 
           </div>
 
           {/* Contact */}
@@ -69,10 +69,10 @@ export default function Footer() {
               Contact
             </h4>
             <a
-              href="mailto:hello@disposablefilms.com"
+              href="mailto:saad@techlinque.com"
               className="font-sans text-text/80 hover:text-accent transition-colors w-fit"
             >
-              hello@disposablefilms.com
+              saad@techlinque.com
             </a>
             <p className="font-sans text-text/80">
               Andheri West, Mumbai
