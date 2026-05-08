@@ -20,7 +20,7 @@ export async function POST(req: Request) {
 
     const data = await getResend().emails.send({
       from: 'Disposable Films <onboarding@resend.dev>',
-      to: 'milnedunk@gmail.com',
+      to: 'milnedunk2@gmail.com',
       subject: `New enquiry request from ${name} (${type})`,
       text: `
         Contact Name: ${name}
