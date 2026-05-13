@@ -3,7 +3,7 @@
 </div>
 
 # Run and deploy app locally
-Disposable Films Creative Agency website (Concept)
+Disposable Films Creative Agency website (Concept).
 This contains everything you need to run your app locally.
 
 ## Run Locally
